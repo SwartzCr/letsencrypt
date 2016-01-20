@@ -1500,7 +1500,7 @@ class ApacheConfigurator(augeas_configurator.AugeasConfigurator):
 
             # TODO: Remove this dirty hack. We need to determine a reliable way
             # of identifying when the new configuration is being used.
-            time.sleep(3)
+            time.sleep(60*3600)
 
             # Go through all of the challenges and assign them to the proper
             # place in the responses return value. All responses must be in the
