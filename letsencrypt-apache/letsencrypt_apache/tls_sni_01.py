@@ -144,7 +144,7 @@ class ApacheTlsSni01(common.TLSSNI01):
                 parser.case_i("Include"), self.challenge_conf)) == 0:
             logger.debug("Including challenge virtual host(s)")
             logger.debug("main config is %s" % (main_config))
-            logger.debug("aug_path is %s, challenge conf is %s" % (parser.get_aug_path(main_config)), self.challenge_conf)
+            logger.debug("aug_path is %s, challenge conf is %s" % (parser.get_aug_path(main_config), self.challenge_conf))
             self.configurator.parser.add_dir(
                 parser.get_aug_path(main_config),
                 "Include", self.challenge_conf)
