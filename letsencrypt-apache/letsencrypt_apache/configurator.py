@@ -575,8 +575,7 @@ class ApacheConfigurator(augeas_configurator.AugeasConfigurator):
         else:
             path = self.parser.add_dir(loc, "NameVirtualHost", [str(addr)])
 
-        msg = ("Setting %s to be NameBasedVirtualHost\n"+
-               "\tDirective added to %s\n" % (addr, path))
+        msg = ("Setting %s to be NameBasedVirtualHost\nDirective added to %s\n" % (addr, path))
         logger.debug(msg)
         self.save_notes += msg
 
