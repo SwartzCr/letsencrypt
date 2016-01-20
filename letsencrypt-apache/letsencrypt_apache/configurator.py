@@ -568,14 +568,14 @@ class ApacheConfigurator(augeas_configurator.AugeasConfigurator):
 
         """
         loc = parser.get_aug_path(self.parser.loc["name"])
-
+        logger.debug("adding ssl to file at path %s" % (loc))
         if addr.get_port() == "443":
             path = self.parser.add_dir_to_ifmodssl(
                 loc, "NameVirtualHost", [str(addr)])
         else:
             path = self.parser.add_dir(loc, "NameVirtualHost", [str(addr)])
 
-        msg = ("Setting %s to be NameBasedVirtualHost\n"
+        msg = ("Setting %s to be NameBasedVirtualHost\n"+
                "\tDirective added to %s\n" % (addr, path))
         logger.debug(msg)
         self.save_notes += msg
@@ -595,6 +595,7 @@ class ApacheConfigurator(augeas_configurator.AugeasConfigurator):
         # Note: This could be made to also look for ip:443 combo
         listens = [self.parser.get_arg(x).split()[0] for
                    x in self.parser.find_dir("Listen")]
+        logger.debug(listens)
         # In case no Listens are set (which really is a broken apache config)
         if not listens:
             listens = ["80"]
