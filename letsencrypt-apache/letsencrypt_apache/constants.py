@@ -17,6 +17,8 @@ CLI_DEFAULTS_DEBIAN = dict(
     handle_mods=True,
     handle_sites=True,
     challenge_location="/etc/apache2"
+    ifmod_open="<IfModule mod_ssl.c>"
+    ifmod_close="</IfModule>"
 )
 CLI_DEFAULTS_CENTOS = dict(
     server_root="/etc/httpd",
@@ -32,6 +34,8 @@ CLI_DEFAULTS_CENTOS = dict(
     handle_mods=False,
     handle_sites=False,
     challenge_location="/etc/httpd/conf.d"
+    ifmod_open="LoadModule ssl_module modules/mod_ssl.so"
+    ifmod_close=""
 )
 CLI_DEFAULTS_GENTOO = dict(
     server_root="/etc/apache2",
@@ -47,6 +51,8 @@ CLI_DEFAULTS_GENTOO = dict(
     handle_mods=False,
     handle_sites=False,
     challenge_location="/etc/apache2/vhosts.d"
+    ifmod_open="<IfModule mod_ssl.c>"
+    ifmod_close="</IfModule>"
 )
 CLI_DEFAULTS = {
     "debian": CLI_DEFAULTS_DEBIAN,

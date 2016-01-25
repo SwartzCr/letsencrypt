@@ -7,6 +7,7 @@ from letsencrypt.plugins import common
 
 from letsencrypt_apache import obj
 from letsencrypt_apache import parser
+from letsencrypt_apache import constants
 
 logger = logging.getLogger(__name__)
 
@@ -94,7 +95,7 @@ class ApacheTlsSni01(common.TLSSNI01):
 
         """
         addrs = set()
-        config_text = "<IfModule mod_ssl.c>\n"
+        config_text = constants.os_constant("ifmod_open")+"\n"
 
         for achall in self.achalls:
             achall_addrs = self._get_addrs(achall)
@@ -102,7 +103,7 @@ class ApacheTlsSni01(common.TLSSNI01):
 
             config_text += self._get_config_text(achall, achall_addrs)
 
-        config_text += "</IfModule>\n"
+        config_text += constants.os_constant("ifmod_close")+"\n"
 
         self._conf_include_check(self.configurator.parser.loc["default"])
         self.configurator.reverter.register_file_creation(
