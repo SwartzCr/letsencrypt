@@ -34,7 +34,7 @@ CLI_DEFAULTS_CENTOS = dict(
     handle_mods=False,
     handle_sites=False,
     challenge_location="/etc/httpd/conf.d",
-    ifmod_open="LoadModule ssl_module modules/mod_ssl.so\nListen 443",
+    ifmod_open="LoadModule ssl_module modules/mod_ssl.so",
     ifmod_close=""
 )
 CLI_DEFAULTS_GENTOO = dict(
