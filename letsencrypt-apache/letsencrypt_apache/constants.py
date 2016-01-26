@@ -16,8 +16,8 @@ CLI_DEFAULTS_DEBIAN = dict(
     le_vhost_ext="-le-ssl.conf",
     handle_mods=True,
     handle_sites=True,
-    challenge_location="/etc/apache2"
-    ifmod_open="<IfModule mod_ssl.c>"
+    challenge_location="/etc/apache2",
+    ifmod_open="<IfModule mod_ssl.c>",
     ifmod_close="</IfModule>"
 )
 CLI_DEFAULTS_CENTOS = dict(
@@ -33,8 +33,8 @@ CLI_DEFAULTS_CENTOS = dict(
     le_vhost_ext="-le-ssl.conf",
     handle_mods=False,
     handle_sites=False,
-    challenge_location="/etc/httpd/conf.d"
-    ifmod_open="LoadModule ssl_module modules/mod_ssl.so"
+    challenge_location="/etc/httpd/conf.d",
+    ifmod_open="LoadModule ssl_module modules/mod_ssl.so\nListen 443",
     ifmod_close=""
 )
 CLI_DEFAULTS_GENTOO = dict(
@@ -50,8 +50,8 @@ CLI_DEFAULTS_GENTOO = dict(
     le_vhost_ext="-le-ssl.conf",
     handle_mods=False,
     handle_sites=False,
-    challenge_location="/etc/apache2/vhosts.d"
-    ifmod_open="<IfModule mod_ssl.c>"
+    challenge_location="/etc/apache2/vhosts.d",
+    ifmod_open="<IfModule mod_ssl.c>",
     ifmod_close="</IfModule>"
 )
 CLI_DEFAULTS = {
