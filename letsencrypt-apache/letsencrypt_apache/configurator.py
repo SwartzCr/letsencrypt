@@ -1503,6 +1503,7 @@ class ApacheConfigurator(augeas_configurator.AugeasConfigurator):
         If this turns out not to be the case in the future. Cleanup and
         outstanding challenges will have to be designed better.
 
+        :raises .errors.ConfigurationError: if Challenge conf isn't Included in Apache
         """
         self._chall_out.update(achalls)
         responses = [None] * len(achalls)
@@ -1524,6 +1525,10 @@ class ApacheConfigurator(augeas_configurator.AugeasConfigurator):
             # TODO: Remove this dirty hack. We need to determine a reliable way
             # of identifying when the new configuration is being used.
             time.sleep(3)
+            if len(self.patser.find_dir(parser.case_i("Include"),
+                   tls_sni_01.challenge_conf)) == 0:
+                raise errors.ConfigurationError(
+                        "Challenge Conf file not included in Apache Conf")
 
             # Go through all of the challenges and assign them to the proper
             # place in the responses return value. All responses must be in the
